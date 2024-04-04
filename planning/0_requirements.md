@@ -1,12 +1,12 @@
 Project has the following requirements:
-1. You have to use git, github and github action. Simulate corporate setup.
-2. Load balancer should be used. And yeah, terraform should be used to deploy it.
-3. The written terraform code for the solution should be modular and clean. 
+1. You have to use git, github and github action. Simulate corporate setup.  <not needed, I will try to implement it alone, grp implementation will come later.>
+2. Load balancer should be used. And yeah, terraform should be used to deploy it. <I don't know how to configure a load balancer and for auto scaling.>
+3. The written terraform code for the solution should be modular and clean. <Terraform I will write later on. I will try to understand and setup something simpler using load balancer.>
 4. There will be three different environment/branches, i.e., dev, staging and prod.
 5. The static website should be serving images from an S3 bucket.
-6. The application will be deployed in an auto scaling group of ec2 instances with a minimum of 1 and a maximum of 4 instances across 3 availability zones.
-7. The application should have a scaling policy to scale out if the load is above 10% of the CPU capacity and scale in if the load is below 5% of the CPU.
-8. table showing different configurations in different terraform environment:
+6. The application will be deployed in an auto scaling group of ec2 instances with a minimum of 1 and a maximum of 4 instances across 3 availability zones. <This is related to load balancing and auto scaling again.>
+7. The application should have a scaling policy to scale out if the load is above 10% of the CPU capacity and scale in if the load is below 5% of the CPU. <Related to scaling again.>
+8. table showing different configurations in different terraform environment: <This comes later>
 
 Environment         CIDR         Number of Instances     Instance Type
    Dev          10.100.0.0/16           2                   t3.micro

@@ -2,3 +2,4 @@
 .terraform
 .terraform.lock.hcl
 /reference-project/2_Second
+*.pem

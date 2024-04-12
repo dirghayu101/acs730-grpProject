@@ -1,0 +1,12 @@
+- From the issues we faced during the making of this project , we learned to simplify infrastructures, dividing tasks into manageable chunks and focusing on one environment at a time. This approach helped us grasp the  requirements better and design scalable solutions efficiently.
+
+- We also ensured consistency in Terraform code across environments by adopting the  best practices like creating reusable modules, minimizing code duplication etc. This helped us keeping our infrastructure configurations uniform and manageable.
+
+- Coordinating collaboration on GitHub, we tried to  include committing regularly and integrating security scans, which  required clear communication and scheduled checkpoints. Setting up GitHub Actions for security scans provided  us with ongoing feedback on code quality and security, which helped  enhance collaboration and project integrity.
+
+- When we faced deployment challenges like resource conflicts or configuration errors, we took a systematic approach to it by Identifying the root cause and applying targeted solutions that helped us resolve issues efficiently and meet our project goals.
+
+- By using logging and monitoring tools during deployment  it allowed us to quickly gather insights and resolve issues. This proactive approach ensured us  smooth deployment and project success.
+
+These lessons learned from the project helped us navigate complexities effectively and deliver on project objectives, demonstrating the value of structured processes and clear communication in project management.
+

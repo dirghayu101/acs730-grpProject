@@ -58,7 +58,7 @@ It consits of 3 components
 -- variables.tf
 
 
-This README provides a detailed guide for setting up the project, configuring environments, and installing Terraform. Following these steps ensures a smooth setup process.
+This README provides a detailed guide for setting up the project, configuring environments, and installing Terraform. Following these steps ensures a smooth setup process. test
 
 
 

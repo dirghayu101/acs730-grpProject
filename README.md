@@ -1,5 +1,5 @@
 Project Setup Instructions
-This guide will walk you through how we set up the project, configuring different environments, and installing Terraform.
+This guide will walk you through how we set up the project, all the configuring different environments, and installing Terraform.
 
 Setting up Prerequisites
 We will need an S3 bucket to store the Terraform state files securely. If  it hasnot been created we can use the AWS CLI or GUI.
@@ -21,7 +21,7 @@ Extract the Terraform binary:
 
 Adding Terraform to PATH:
 -- Add the directory containing the Terraform binary to your system's PATH environment variable.
--- For Linux/Mac: Edit your shell configuration file (e.g., ~/.bashrc, ~/.bash_profile, ~/.zshrc) and add the following line: export PATH=$PATH:/path/to/terraform/directory
+-- For Linux/Mac: shell configuration file (e.g., ~/.bashrc, ~/.bash_profile, ~/.zshrc) and then add the following line: export PATH=$PATH:/path/to/terraform/directory
 
 Verifying Installation:
 

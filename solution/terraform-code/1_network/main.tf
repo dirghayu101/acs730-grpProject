@@ -13,7 +13,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-# Local declaration for tag generation. This will be helpful in identifying environment later.
+# Local Block declaration for tag generation. To tag env value.
 locals {
   default_tags = {
     "Owner" = "Group-17"

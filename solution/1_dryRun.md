@@ -1,13 +1,15 @@
 I will be replicating a bit of this infrastructure using the Amazon GUI, I will see what all changes I will make to defaults to configure it:
 
 
-<ed>
+<ed> -> Environment Dependent
 
-# Step 1: VPC Creation:
+
+<Networking Module Starts Here>
+# Step 1: VPC Creation: (Done)
 Name: try-acs-final <ed>
 CIDR: 10.2.0.0/16 <ed>
 
-# Step 2: Create the following Subnets:
+# Step 2: Create the following Subnets: (Done)
     # Subnet 1: 
         VPC: vpc-0849df4dc5f5c84d0
         Name: acs-final-1   <ed>
@@ -44,11 +46,11 @@ CIDR: 10.2.0.0/16 <ed>
         AZ: us-east-1d
         CIDR Block: 10.2.6.0/24  <ed>
 
-# Step 3: Internet Gateway creation:
+# Step 3: Internet Gateway creation: (Done)
     Name: acs-final-igw 
     VPC associated with: vpc-0849df4dc5f5c84d0 # Then attach it to VPC.
 
-# Step 3.5: NAT Gateway setup.
+# Step 3.5: NAT Gateway setup. (Done)
     Name: acs-final-nat 
     Subnet: acs-final-1
     Type of Nat Gateway Connectivity: Public
@@ -56,7 +58,7 @@ CIDR: 10.2.0.0/16 <ed>
 # For a public Nat Gateway, you have to create an elastic IP. This might become another step. GUI did it automatically while allocating.
 
 
-# Step 4: Route table creation:
+# Step 4: Route table creation: (Done)
     # Public route table:
         Name: acs-final-rtb-public <ed>
         Associated subnets with this route table: acs-final-1, acs-final-2, acs-final-3.
@@ -67,13 +69,16 @@ CIDR: 10.2.0.0/16 <ed>
         Associate subnets with this route table: priv-acs-final-1, priv-acs-final-2, priv-acs-final-3
         Add Nat gateway as one of the route.
 
+<Networking Module Ends Here>
 
 # Step 5: Setup S3 bucket in the aws console.
     Upload images and use this command on each image object to give them public access.
         aws s3 presign s3://acs-final-ec2-bucket/demo.png --expires-in 3000
 
 
-# Step 6: Bastion Setup (I will use an ec2 instance in public subnet, will replace this with some bastion initialization code):
+<Computing Setup Module Starts Here.>
+
+# Step 6: Bastion Setup (I will use an ec2 instance in public subnet, will replace this with some bastion initialization code): (Done)
     Name: acs-final-access-node
     AMI: Amazon Linux (ami-051f8a213df8bc089)
     Instance type: t2.micro
@@ -85,14 +90,14 @@ CIDR: 10.2.0.0/16 <ed>
     ...Rest is default.
 
 
-# Step 7: Security Group setup for ec2 instances in the ASG and Load Balancer.
+# Step 7: Security Group setup for ec2 instances in the ASG and Load Balancer. (Done)
     Name: acs-final-ec2-sg
     Description: Allows HTTP and SSH.
     VPC: vpc-0849df4dc5f5c84d0 (created one: try-acs-final)
     Inbound 1: SSH from 10.2.0.0/16 -> Project VPC's CIDR block.
     Inbound 2: HTTP from 0.0.0.0 -> Project VPC's CIDR block.
 
-# Step 8: Original ec2 setup for ASG and load balancing:
+# Step 8: Original ec2 setup for ASG and load balancing: (Done)
     Name: acs-final-default
     AMI: Amazon Linux (ami-051f8a213df8bc089)
     Instance type: t2.micro  <ed>
@@ -101,9 +106,13 @@ CIDR: 10.2.0.0/16 <ed>
     Subnet: priv-acs-final-1
     Security Group: acs-final-ec2-sg
 
-# Step 9: Login to this ec2 instance and initialize web-server using Bastion host.
+# Step 9: Login to this ec2 instance and initialize web-server using Bastion host. (Done)
 
-# Step 9.5: Delete NAT gateway and elastic IP that were initialized.
+# Step 9.5: Delete NAT gateway and elastic IP that were initialized. (Done)
+
+<Computing Setup Module Ends Here>
+
+<Balance-and-Scale module starts here.>
 
 # Step 10: Capturing AMI image of the intialized webserver:
     Name: default-webserver-ami
@@ -154,3 +163,5 @@ Didn't choose any target instances. The default instance is not considered a tar
     Tag for the new instant:
     Name - ec2-asg-created
     Rest were default.
+
+<Balance and Scale Module Ends Here>

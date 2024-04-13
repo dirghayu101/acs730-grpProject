@@ -35,7 +35,7 @@ locals {
   ami_id             = var.ami_id
 }
 
-#! Computing Resource Declaration Starts Here
+# Computing Resource Declaration Starts Here
 # 1. Bastion Security Group Setup.
 resource "aws_security_group" "bastion_sg" {
   name        = "allow_ssh"
